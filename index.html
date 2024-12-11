@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>LOVE ARYA</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<div style="position: absolute; top: 20px; left: 50%; transform: translateX(-50%); text-align: center; z-index: 2;">
+  <p id="typed-text" style="font-family: 'Dancing Script', cursive; color: white; font-size: 32px; margin: 0;"></p>
+</div>
+<canvas id="heart"></canvas>
+
+<div style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); z-index: 2;">
+  <audio id="bgMusic">
+    <source src="antihero.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+  <button onclick="toggleMusic()" style="padding: 10px 20px; background: rgba(255,255,255,0.2); border: 2px solid white; color: white; border-radius: 20px; cursor: pointer;">
+    ▶ Play Music
+  </button>
+</div>
+
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap" rel="stylesheet">
+<script src="./script.js"></script>
+<script>
+const text = "I Love You More Sayangggg!!";
+let index = 0;
+
+function typeText() {
+  if (index < text.length) {
+    document.getElementById("typed-text").textContent += text.charAt(index);
+    index++;
+    setTimeout(typeText, 100);
+  }
+}
+
+function toggleMusic() {
+  const music = document.getElementById('bgMusic');
+  const btn = document.querySelector('button');
+  if (music.paused) {
+    music.play();
+    btn.innerHTML = '⏸ Pause Music';
+  } else {
+    music.pause();
+    btn.innerHTML = '▶ Play Music';
+  }
+}
+
+window.addEventListener('load', typeText);
+</script>
+
+</body>
+</html>
